@@ -1,6 +1,9 @@
 # MensageriaComRabbitMQ
 Projeto utilizado para fidelizar o conhecimento adquirido durante as aulas do curso de RabbitMQ com .Net do professor Luis Dev.
 
+# Documentação do RabbitMQ
+https://www.rabbitmq.com/tutorials
+
 # Informações Adicionais
 Foi implementado o pattern publisher/subscriber utilizando exchange do tipo topic no RabbitMQ.
 
