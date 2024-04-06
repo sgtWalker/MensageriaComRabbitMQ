@@ -13,15 +13,23 @@ podman run -d --hostname rmq --name rabbit-server -p 8080:15672 -p 5672:5672 rab
 # Instalação do RabbitMQ (Docker)
 docker run -d --hostname rmq --name rabbit-server -p 8080:15672 -p 5672:5672 rabbitmq:3-management
 
-# Body de exemplo para o post do publisher customer
-{
-  "id": 1,
-  "name": "Custumer Name",
-  "birthDate": "2024-04-05T00:00:00.000Z"
-}
-
 # Estrutura criada no RabbitMQ
 Exchange: publisher-customers (topic)
 Queue: customer-created
 Binding: customer-created
+
+# Como utilizar o projeto?
+1 - Deixe o projeto Publisher.Customers.API como startup project e inicie-o;
+2 - No swagger, abra a rota POST da controller Customers;
+3 - Clique no botão Try it out e insira o body abaixo:
+    {
+      "id": 1,
+      "name": "Custumer Name",
+      "birthDate": "2024-04-05T00:00:00.000Z"
+    }
+4 - Clique no botão Execute para enviar a requisição;
+5 - Acesse o painel do RabbitMQ (localhost:8080);
+6 - Verifique se a estrutura citada no tópico anterior está criada e com a mensagem enviada pelo POST na fila;
+7 - Se a mensagem estiver na fila, pare a execução do projeto;
+8 - Execute o projeto Subscriber.Marketing.API e verifique o console, pois, quando a mensagem for consumida o consumidor logará a mensagem no console do projeto;
 
