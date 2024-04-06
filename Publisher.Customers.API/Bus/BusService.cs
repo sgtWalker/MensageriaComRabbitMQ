@@ -8,7 +8,7 @@ namespace Publisher.Customers.API.Bus
     public class BusService : IBusService
     {
         private const string EXCHANGE = "publisher-customers";
-        private const string QUEUE_NAME = "customer-created";
+        private const string QUEUE = "customer-created";
         private readonly IModel _channel;
 
         public BusService()
@@ -22,8 +22,8 @@ namespace Publisher.Customers.API.Bus
 
             _channel = connection.CreateModel();
             _channel.ExchangeDeclare(exchange: EXCHANGE, type: "topic", durable: false, autoDelete: false);
-            _channel.QueueDeclare(queue: QUEUE_NAME, durable: false, exclusive: false, autoDelete: false);
-            _channel.QueueBind(queue: QUEUE_NAME, exchange: EXCHANGE, routingKey: QUEUE_NAME);
+            _channel.QueueDeclare(queue: QUEUE, durable: false, exclusive: false, autoDelete: false);
+            _channel.QueueBind(queue: QUEUE, exchange: EXCHANGE, routingKey: QUEUE);
         }
 
         public Task Publish<T>(string routingKey, T message)

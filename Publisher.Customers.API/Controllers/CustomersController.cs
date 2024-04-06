@@ -2,7 +2,6 @@
 using Publisher.Customers.API.Bus;
 using Publisher.Customers.API.Entities;
 using Publisher.Customers.API.InputModels;
-using System.Runtime.CompilerServices;
 
 namespace Publisher.Customers.API.Controllers
 {
